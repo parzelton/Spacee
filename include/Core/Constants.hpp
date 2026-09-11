@@ -29,7 +29,7 @@ namespace Config {
 
     namespace Gui {
         inline constexpr float width = 450.f;
-        inline constexpr float height = 300.f;
+        inline constexpr float height = 360.f;
 
         inline constexpr float fontGlobalCase = 1.4f;
     };
