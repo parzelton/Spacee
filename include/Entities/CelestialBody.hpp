@@ -2,7 +2,7 @@
 #include <memory>
 #include <iostream>
 #include <SFML/Graphics.hpp>
-//#include "Core/Camera.hpp"
+
 class Camera;
 
 enum class CoordinateType {
@@ -22,6 +22,8 @@ protected:
     sf::Vector2<double> realV;  // velocity
     sf::Color color;
 
+    sf::CircleShape shape;
+
 
 public:
     // heliocentric rectangular & ecliptic coordinate system
@@ -30,9 +32,10 @@ public:
                   CoordinateType type = CoordinateType::Ecliptic);
     virtual ~CelestialBody() = default;
 
-    virtual void update(double acceleratedDt) = 0;
-    virtual void draw(sf::RenderWindow& window, const Camera& camera) = 0;
-    virtual bool isClicked(sf::Vector2f mouseCoords) = 0;
+    // these ones have default implementations
+    virtual void update(double acceleratedDt);
+    virtual void draw(sf::RenderWindow& window, const Camera& camera);
+    virtual bool isClicked(sf::Vector2f mouseCoords);
 
     const std::string getName() const;
     const float getRadius() const;
@@ -51,4 +54,6 @@ public:
     void setY(double y);
     void setRealV(sf::Vector2<double> realV);
     void setColor(sf::Color color);
+
+    void setShape();
 };

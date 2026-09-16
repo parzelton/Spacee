@@ -143,5 +143,8 @@
     <ClInclude Include="include\Core\InputState.hpp">
       <Filter>Файлы заголовков\Core</Filter>
     </ClInclude>
+    <ClInclude Include="Satellite.hpp">
+      <Filter>Файлы заголовков\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

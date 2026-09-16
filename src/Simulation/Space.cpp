@@ -12,6 +12,7 @@ Space::Space(double startTimeAcceleration) {
     stars = BackgroundStars();
     this->timeAcceleration = startTimeAcceleration;
     elapsedSimulationTime = 0.;
+    elapsedRealTime = 0.;
 }
 
 void Space::changeVelocities(double acceleratedDt) {
@@ -65,12 +66,22 @@ void Space::drawSpace(sf::RenderWindow& window, Camera& camera, float deltaTime)
     double acceleratedDt = static_cast<double>(safeDeltaTime * this->timeAcceleration);
 
     elapsedSimulationTime += acceleratedDt;
+    elapsedRealTime += deltaTime;
 
     // sub-stepping
     int steps = static_cast<int>(std::ceil(acceleratedDt / Config::Window::maxSubDt));
     steps = std::min(steps, Config::Window::maxSteps);
 
     float subDt = static_cast<float>(acceleratedDt) / static_cast<float>(steps);
+
+    // star pulsation
+    for (std::unique_ptr<CelestialBody>& body : bodies) {
+        if (typeid(*body) == typeid(Star)) {
+            Star* star = static_cast<Star*>(body.get());
+            star->updatePulse(elapsedRealTime);
+            break;
+        }
+    }
 
     for (size_t i = 0; i < steps; ++i) {
         changeVelocities(subDt);

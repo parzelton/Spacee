@@ -36,7 +36,7 @@ namespace Config {
 
     namespace Coefs {
         inline constexpr double G = 6.67430E-11; // N*m^2/kg^2   or   m^3/(kg*s^2)
-        inline constexpr double AU_TO_M = 149597870.7 * 1000.  ;  // m     (1.496E-11)
+        inline constexpr double AU_TO_M = 149597870.7 * 1000.;  // m     (1.496E-11)
         inline constexpr double M_TO_AU = 6.684587E-12;  // or (1. / AU_TO_M)
         inline constexpr double EM_TO_KG = 5.972E24;
         inline constexpr float startTimeAcceleration = 1E6;
@@ -75,7 +75,7 @@ namespace Config {
             inline constexpr float pixelRadius = 35.f;
             inline constexpr float minPixelRadius = 4.f;
 
-            inline const sf::Color color(243, 159, 24);
+            inline const sf::Color color(243, 159, 24, 235);
         }
 
         // terrestial planets

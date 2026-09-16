@@ -73,3 +73,14 @@ double distanseFromStar(const CelestialBody& star, const CelestialBody& anotherC
     double dy = abs(star.getY() - anotherCb.getY());
     return std::sqrt(dx * dx + dy * dy);
 }
+
+sf::Color lerpColors(sf::Color start, sf::Color end, float t) {
+    t = std::max(0.f, std::min(1.f, t));
+
+    uint8_t r = static_cast<uint8_t>(start.r + (end.r - start.r) * t);
+    uint8_t g = static_cast<uint8_t>(start.g + (end.g - start.g) * t);
+    uint8_t b = static_cast<uint8_t>(start.b + (end.b - start.b) * t);
+    uint8_t a = start.a;  // start.a equals end.a
+
+    return sf::Color(r, g, b, a);
+}

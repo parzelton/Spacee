@@ -24,3 +24,6 @@ enum class Unit { Meter, Kilometer, Au, Kilogram, Em, Mps, Aps, Sec, Year };
 std::string formatDouble(double number, Unit unit);
 
 double distanseFromStar(const CelestialBody& star, const CelestialBody& anotherCb);
+
+// linear interpolation of two colors
+sf::Color lerpColors(sf::Color start, sf::Color end, float t);

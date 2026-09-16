@@ -17,6 +17,7 @@ private:
 	BackgroundStars stars;
 	float timeAcceleration;
 	double elapsedSimulationTime;
+	double elapsedRealTime;
 
 	// 0 - Sun, 1 - Mercury, 2 - Venus, etc.
 	std::vector<std::unique_ptr<CelestialBody>> bodies;
