@@ -167,6 +167,7 @@
     <ClCompile Include="src\Core\Constants.cpp" />
     <ClCompile Include="src\Core\GuiManager.cpp" />
     <ClCompile Include="src\Entities\CelestialBody.cpp" />
+    <ClCompile Include="src\Entities\Moon.cpp" />
     <ClCompile Include="src\Entities\Planet.cpp" />
     <ClCompile Include="src\Entities\Star.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -190,11 +191,11 @@
     <ClInclude Include="include\Core\InputState.hpp" />
     <ClInclude Include="include\Core\RenderContext.hpp" />
     <ClInclude Include="include\Entities\CelestialBody.hpp" />
+    <ClInclude Include="include\Entities\Moon.hpp" />
     <ClInclude Include="include\Entities\Planet.hpp" />
     <ClInclude Include="include\Entities\Star.hpp" />
     <ClInclude Include="include\Simulation\BackgroundStars.hpp" />
     <ClInclude Include="include\Simulation\Space.hpp" />
-    <ClInclude Include="Satellite.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

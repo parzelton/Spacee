@@ -10,6 +10,11 @@ public:
 
 private:
 	static void renderControlPanel(const RenderContext& ctx);
+
+	static void renderSpeedReset(const RenderContext& ctx, int targetInd);
+
+	///
+
 	static void renderInfo(const RenderContext& ctx);
 
 	static void renderTypeInfo(const RenderContext& ctx, int targetInd);

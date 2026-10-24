@@ -13,7 +13,7 @@ private:
 public:
     Star(std::string name, float radius, float minRadius, double mass,
          double a, double b, sf::Vector2<double> realV, sf::Color color,
-         CoordinateType type = CoordinateType::Ecliptic);
+         CoordinateType type = CoordinateType::Rectangular);
 
 	// TODO: trail
 

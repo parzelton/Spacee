@@ -7,7 +7,7 @@ class Camera;
 
 enum class CoordinateType {
     Rectangular,
-    Ecliptic
+    Polar
 };
 
 
@@ -24,12 +24,15 @@ protected:
 
     sf::CircleShape shape;
 
+    bool isGravitySource = true;
+    CelestialBody* parent = nullptr;
+
 
 public:
     // heliocentric rectangular & ecliptic coordinate system
     CelestialBody(std::string name, float radius, float minRadius, double mass,
                   double a, double b, sf::Vector2<double> realV, sf::Color color,
-                  CoordinateType type = CoordinateType::Ecliptic);
+                  CoordinateType type = CoordinateType::Rectangular);
     virtual ~CelestialBody() = default;
 
     // these ones have default implementations
@@ -46,6 +49,10 @@ public:
     const sf::Vector2<double> getRealV() const;
     const sf::Color getColor() const;
 
+    const bool getIsGravitySource() const;
+    const CelestialBody* getParent() const;
+
+
     void setName(std::string name);
     void setRadius(float radius);
     void setMinRadius(float minRadius);
@@ -56,4 +63,7 @@ public:
     void setColor(sf::Color color);
 
     void setShape();
+
+    void setIsGravitySource(bool isGravitySource);
+    void setParent(CelestialBody* parent);
 };

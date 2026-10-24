@@ -4,6 +4,8 @@
 #include "Entities/CelestialBody.hpp"
 #include "Entities/Star.hpp"
 #include "Entities/Planet.hpp"
+#include "Entities/Moon.hpp"
+
 
 #include "Core/Constants.hpp"
 #include <iostream>
@@ -108,11 +110,11 @@ void Space::initializeSolarSystem() {
                                                                 Config::CB::Sun::pixelRadius,
                                                                 Config::CB::Sun::minPixelRadius,
                                                                 Config::CB::Sun::mass,
-                                                                Config::CB::Sun::longitude,
-                                                                Config::CB::Sun::distance,
+                                                                Config::CB::Sun::startBaseRealX,
+                                                                Config::CB::Sun::startBaseRealY,
                                                                 Config::CB::Sun::realV,
                                                                 Config::CB::Sun::color,
-                                                                CoordinateType::Ecliptic);
+                                                                CoordinateType::Rectangular);
     bodies.push_back(std::move(sun));
 
     // Mercury
@@ -120,11 +122,11 @@ void Space::initializeSolarSystem() {
                                                                       Config::CB::Mercury::pixelRadius,
                                                                       Config::CB::Mercury::minPixelRadius,
                                                                       Config::CB::Mercury::mass,
-                                                                      Config::CB::Mercury::longitudeAphelion,
-                                                                      Config::CB::Mercury::aphelion,
-                                                                      Config::CB::Mercury::aphelionVelocity,
+                                                                      Config::CB::Mercury::startBaseRealX,
+                                                                      Config::CB::Mercury::startBaseRealY,
+                                                                      Config::CB::Mercury::trueVelocity,
                                                                       Config::CB::Mercury::color,
-                                                                      CoordinateType::Ecliptic);
+                                                                      CoordinateType::Rectangular);
     bodies.push_back(std::move(mercury));
 
     // Venus
@@ -132,11 +134,11 @@ void Space::initializeSolarSystem() {
                                                                     Config::CB::Venus::pixelRadius,
                                                                     Config::CB::Venus::minPixelRadius,
                                                                     Config::CB::Venus::mass,
-                                                                    Config::CB::Venus::longitudeAphelion,
-                                                                    Config::CB::Venus::aphelion,
-                                                                    Config::CB::Venus::aphelionVelocity,
+                                                                    Config::CB::Venus::startBaseRealX,
+                                                                    Config::CB::Venus::startBaseRealY,
+                                                                    Config::CB::Venus::trueVelocity,
                                                                     Config::CB::Venus::color,
-                                                                    CoordinateType::Ecliptic);
+                                                                    CoordinateType::Rectangular);
     bodies.push_back(std::move(venus));
 
     // Earth
@@ -144,11 +146,11 @@ void Space::initializeSolarSystem() {
                                                                     Config::CB::Earth::pixelRadius,
                                                                     Config::CB::Earth::minPixelRadius,
                                                                     Config::CB::Earth::mass,
-                                                                    Config::CB::Earth::longitudeAphelion,
-                                                                    Config::CB::Earth::aphelion,
-                                                                    Config::CB::Earth::aphelionVelocity,
+                                                                    Config::CB::Earth::startBaseRealX,
+                                                                    Config::CB::Earth::startBaseRealY,
+                                                                    Config::CB::Earth::trueVelocity,
                                                                     Config::CB::Earth::color,
-                                                                    CoordinateType::Ecliptic);
+                                                                    CoordinateType::Rectangular);
     bodies.push_back(std::move(earth));
 
     // Mars
@@ -156,11 +158,11 @@ void Space::initializeSolarSystem() {
                                                                    Config::CB::Mars::pixelRadius,
                                                                    Config::CB::Mars::minPixelRadius,
                                                                    Config::CB::Mars::mass,
-                                                                   Config::CB::Mars::longitudeAphelion,
-                                                                   Config::CB::Mars::aphelion,
-                                                                   Config::CB::Mars::aphelionVelocity,
+                                                                   Config::CB::Mars::startBaseRealX,
+                                                                   Config::CB::Mars::startBaseRealY,
+                                                                   Config::CB::Mars::trueVelocity,
                                                                    Config::CB::Mars::color,
-                                                                   CoordinateType::Ecliptic);
+                                                                   CoordinateType::Rectangular);
     bodies.push_back(std::move(mars));
 
     // Jupiter
@@ -168,11 +170,11 @@ void Space::initializeSolarSystem() {
                                                                       Config::CB::Jupiter::pixelRadius,
                                                                       Config::CB::Jupiter::minPixelRadius,
                                                                       Config::CB::Jupiter::mass,
-                                                                      Config::CB::Jupiter::longitudeAphelion,
-                                                                      Config::CB::Jupiter::aphelion,
-                                                                      Config::CB::Jupiter::aphelionVelocity,
+                                                                      Config::CB::Jupiter::startBaseRealX,
+                                                                      Config::CB::Jupiter::startBaseRealY,
+                                                                      Config::CB::Jupiter::trueVelocity,
                                                                       Config::CB::Jupiter::color,
-                                                                      CoordinateType::Ecliptic);
+                                                                      CoordinateType::Rectangular);
     bodies.push_back(std::move(jupiter));
 
     // Saturn
@@ -180,11 +182,11 @@ void Space::initializeSolarSystem() {
                                                                      Config::CB::Saturn::pixelRadius,
                                                                      Config::CB::Saturn::minPixelRadius,
                                                                      Config::CB::Saturn::mass,
-                                                                     Config::CB::Saturn::longitudeAphelion,
-                                                                     Config::CB::Saturn::aphelion,
-                                                                     Config::CB::Saturn::aphelionVelocity,
+                                                                     Config::CB::Saturn::startBaseRealX,
+                                                                     Config::CB::Saturn::startBaseRealY,
+                                                                     Config::CB::Saturn::trueVelocity,
                                                                      Config::CB::Saturn::color,
-                                                                     CoordinateType::Ecliptic);
+                                                                     CoordinateType::Rectangular);
     bodies.push_back(std::move(saturn));
 
     // Uranus
@@ -192,11 +194,11 @@ void Space::initializeSolarSystem() {
                                                                      Config::CB::Uranus::pixelRadius,
                                                                      Config::CB::Uranus::minPixelRadius,
                                                                      Config::CB::Uranus::mass,
-                                                                     Config::CB::Uranus::longitudeAphelion,
-                                                                     Config::CB::Uranus::aphelion,
-                                                                     Config::CB::Uranus::aphelionVelocity,
+                                                                     Config::CB::Uranus::startBaseRealX,
+                                                                     Config::CB::Uranus::startBaseRealY,
+                                                                     Config::CB::Uranus::trueVelocity,
                                                                      Config::CB::Uranus::color,
-                                                                     CoordinateType::Ecliptic);
+                                                                     CoordinateType::Rectangular);
     bodies.push_back(std::move(uranus));
 
     // Neptune
@@ -204,11 +206,11 @@ void Space::initializeSolarSystem() {
                                                                      Config::CB::Neptune::pixelRadius,
                                                                      Config::CB::Neptune::minPixelRadius,
                                                                      Config::CB::Neptune::mass,
-                                                                     Config::CB::Neptune::longitudeAphelion,
-                                                                     Config::CB::Neptune::aphelion,
-                                                                     Config::CB::Neptune::aphelionVelocity,
+                                                                     Config::CB::Neptune::startBaseRealX,
+                                                                     Config::CB::Neptune::startBaseRealY,
+                                                                     Config::CB::Neptune::trueVelocity,
                                                                      Config::CB::Neptune::color,
-                                                                     CoordinateType::Ecliptic);
+                                                                     CoordinateType::Rectangular);
     bodies.push_back(std::move(neptune));
 
     // Pluto
@@ -216,12 +218,25 @@ void Space::initializeSolarSystem() {
                                                                     Config::CB::Pluto::pixelRadius,
                                                                     Config::CB::Pluto::minPixelRadius,
                                                                     Config::CB::Pluto::mass,
-                                                                    Config::CB::Pluto::longitudeAphelion,
-                                                                    Config::CB::Pluto::aphelion,
-                                                                    Config::CB::Pluto::aphelionVelocity,
+                                                                    Config::CB::Pluto::startBaseRealX,
+                                                                    Config::CB::Pluto::startBaseRealY,
+                                                                    Config::CB::Pluto::trueVelocity,
                                                                     Config::CB::Pluto::color,
-                                                                    CoordinateType::Ecliptic);
+                                                                    CoordinateType::Rectangular);
     bodies.push_back(std::move(pluto));
+
+    // Moon
+    std::unique_ptr<CelestialBody> moon = std::make_unique<Moon>(Config::CB::Moon::name,
+                                                                    Config::CB::Moon::pixelRadius,
+                                                                    Config::CB::Moon::minPixelRadius,
+                                                                    Config::CB::Moon::mass,
+                                                                    Config::CB::Moon::startBaseRealX,
+                                                                    Config::CB::Moon::startBaseRealY,
+                                                                    Config::CB::Moon::trueHeliocentricVelocity,
+                                                                    Config::CB::Moon::color,
+                                                                    CoordinateType::Rectangular,
+                                                                    earth.get());
+    bodies.push_back(std::move(moon));
 }
 
 

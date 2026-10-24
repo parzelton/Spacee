@@ -56,6 +56,11 @@ const double CelestialBody::getY() const { return y; }
 const sf::Vector2<double> CelestialBody::getRealV() const { return realV; };
 const sf::Color CelestialBody::getColor() const { return color; }
 
+const bool CelestialBody::getIsGravitySource() const { return isGravitySource; }
+const CelestialBody* CelestialBody::getParent() const { return parent; }
+
+
+
 void CelestialBody::setName(std::string name) { this->name = name; }
 void CelestialBody::setRadius(float raidus) { this->radius = radius; }
 void CelestialBody::setMinRadius(float minRadius) { this->minRadius = minRadius; }
@@ -71,3 +76,6 @@ void CelestialBody::setShape() {
     shape.setOrigin(sf::Vector2f(radius, radius));
     shape.setPosition(sf::Vector2f(x, y));
 }
+
+void CelestialBody::setParent(CelestialBody* parent) { this->parent = parent; }
+void CelestialBody::setIsGravitySource(bool isGravitySource) { this->isGravitySource = isGravitySource; }

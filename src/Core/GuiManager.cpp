@@ -71,7 +71,28 @@ void GuiManager::renderControlPanel(const RenderContext& ctx) {
     ImGui::Text("years");
 
     ctx.space.setTimeAcceleration(static_cast<float>(timeAcceleration));
+
+
+
+
+    const int targetInd = ctx.camera.getTargetInd();
+    renderSpeedReset(ctx, targetInd);
 }
+
+
+void GuiManager::renderSpeedReset(const RenderContext& ctx, int targetInd) {
+    if (!ctx.mouseStates.isCbSelected) return;
+
+    ImGui::TextColored(ImVec4(255, 0, 0, 255), "Reset Speed:");
+    ImGui::SameLine();
+    if (ImGui::Button("R")) {
+        ctx.space.getBodies().at(targetInd)->setRealV( {.0, .0} );
+    }
+}
+
+
+
+///
 
 void GuiManager::renderInfo(const RenderContext& ctx) {
     ImGui::SeparatorText("Info");

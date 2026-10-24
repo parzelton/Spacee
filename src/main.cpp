@@ -95,6 +95,19 @@ int main() {
                         }
                     }
 
+                    if (keyPressed->scancode == sf::Keyboard::Scancode::E) {
+                        int ind = 0;
+                        for (const std::unique_ptr<CelestialBody>& body : space.getBodies()) {
+                            if (body->getName() == Config::CB::Earth::name) {
+                                camera.setTargetInd(ind);
+                                camera.setIsFollowing(true);
+                                mouseStates.isCbSelected = true;
+                                break;
+                            }
+                            ++ind;
+                        }
+                    }
+
                     if (keyPressed->scancode == sf::Keyboard::Scancode::F11) {
                         if (!isFullscreen) {
                             window.create(sf::VideoMode::getDesktopMode(), "Spacee", sf::Style::None);

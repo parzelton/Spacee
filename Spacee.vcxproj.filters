@@ -81,6 +81,9 @@
     <ClCompile Include="src\Core\GuiManager.cpp">
       <Filter>Исходные файлы\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Entities\Moon.cpp">
+      <Filter>Исходные файлы\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Core\BaseFunctions.hpp">
@@ -143,7 +146,7 @@
     <ClInclude Include="include\Core\InputState.hpp">
       <Filter>Файлы заголовков\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Satellite.hpp">
+    <ClInclude Include="include\Entities\Moon.hpp">
       <Filter>Файлы заголовков\Entities</Filter>
     </ClInclude>
   </ItemGroup>
