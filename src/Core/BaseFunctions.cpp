@@ -92,6 +92,12 @@ std::string formatDouble(double number, Unit unit) {
 
     return oss.str();
 }
+std::string formatExponential(double number) {
+    std::ostringstream oss;
+    oss.imbue(std::locale("en_US.UTF-8"));
+    oss << std::scientific << number;
+    return oss.str();
+}
 
 double distanseFromStar(const CelestialBody& star, const CelestialBody& anotherCb) {
     double dx = abs(star.getX() - anotherCb.getX());
@@ -111,7 +117,7 @@ sf::Color lerpColors(sf::Color start, sf::Color end, float t) {
 }
 
 double calculatePolarRadius(double semiMajorAxis, double eccentricity, sf::Angle trueAnomaly) {
-    double r = semiMajorAxis * (1. - eccentricity * eccentricity) / (1 + eccentricity * cos(trueAnomaly.asRadians()));
+    double r = semiMajorAxis * (1. - eccentricity * eccentricity) / (1. + eccentricity * cos(trueAnomaly.asRadians()));
     return r;
 }
 

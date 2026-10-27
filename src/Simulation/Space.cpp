@@ -227,15 +227,15 @@ void Space::initializeSolarSystem() {
 
     // Moon
     std::unique_ptr<CelestialBody> moon = std::make_unique<Moon>(Config::CB::Moon::name,
-                                                                    Config::CB::Moon::pixelRadius,
-                                                                    Config::CB::Moon::minPixelRadius,
-                                                                    Config::CB::Moon::mass,
-                                                                    Config::CB::Moon::startBaseRealX,
-                                                                    Config::CB::Moon::startBaseRealY,
-                                                                    Config::CB::Moon::trueHeliocentricVelocity,
-                                                                    Config::CB::Moon::color,
-                                                                    CoordinateType::Rectangular,
-                                                                    earth.get());
+                                                                 Config::CB::Moon::pixelRadius,
+                                                                 Config::CB::Moon::minPixelRadius,
+                                                                 Config::CB::Moon::mass,
+                                                                 Config::CB::Moon::startBaseRealX,
+                                                                 Config::CB::Moon::startBaseRealY,
+                                                                 Config::CB::Moon::trueHeliocentricVelocity,
+                                                                 Config::CB::Moon::color,
+                                                                 CoordinateType::Rectangular,
+                                                                 earth.get());
     bodies.push_back(std::move(moon));
 }
 

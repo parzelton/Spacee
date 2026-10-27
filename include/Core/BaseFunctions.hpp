@@ -22,6 +22,7 @@ sf::Angle argumentOfVelocityAtTrueLongitude(sf::Angle L, double e, sf::Angle Ome
 
 enum class Unit { Meter, Kilometer, Au, Kilogram, Em, Mps, Aps, Sec, Year };
 std::string formatDouble(double number, Unit unit);
+std::string formatExponential(double number);
 
 double distanseFromStar(const CelestialBody& star, const CelestialBody& anotherCb);
 

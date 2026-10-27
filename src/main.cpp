@@ -165,6 +165,8 @@ int main() {
             GuiManager::render(ctx);
             ImGui::SFML::Render(window);
 
+            std::cout << "initScale=" << camera.getInitScale() << ", currScale=" << camera.getCurrScale() << ", relScale=" << camera.getRelScale() << std::endl;
+
             window.display();
         }
     }

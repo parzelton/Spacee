@@ -11,6 +11,8 @@ public:
 private:
 	static void renderControlPanel(const RenderContext& ctx);
 
+	static void renderScaleSlider(const RenderContext& ctx);
+	static void renderTimeAcceleration(const RenderContext& ctx);
 	static void renderSpeedReset(const RenderContext& ctx, int targetInd);
 
 	///

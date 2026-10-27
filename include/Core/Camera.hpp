@@ -6,7 +6,8 @@
 class Camera {
 private:
 	sf::Vector2<double> position;  // meters
-	double scale;
+	double initScale;
+	double currScale;
 	bool isFollowing;
 	int targetInd;
 
@@ -25,11 +26,14 @@ public:
 	void move(double deltaX, double deltaY);
 
 	const sf::Vector2<double> getPosition() const;
-	const double getScale() const;
+	const double getInitScale() const;
+	const double getCurrScale() const;
 	const float getRelScale() const;  // relative scale is the scale relative to the initial scale (Config::Camera::scale)
 	const bool getIsFollowing() const;
 	const int getTargetInd() const;
 
+	void setInitScale(double initScale);
+	void setCurrScale(double currScale);
 	void setIsFollowing(bool isFollowing);
 	void setTargetInd(int targetInd);
 };

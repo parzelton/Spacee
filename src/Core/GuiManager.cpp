@@ -32,9 +32,35 @@ void GuiManager::render(const RenderContext& ctx) {
     ImGui::End();
 }
 
+///
+
 void GuiManager::renderControlPanel(const RenderContext& ctx) {
 	ImGui::SeparatorText("Control Panel");
 
+    renderTimeAcceleration(ctx);
+
+    renderScaleSlider(ctx);
+
+    const int targetInd = ctx.camera.getTargetInd();
+    renderSpeedReset(ctx, targetInd);
+}
+
+
+
+void GuiManager::renderScaleSlider(const RenderContext& ctx) {
+    double scale = ctx.camera.getInitScale();
+
+    double minInitScale = Config::Camera::minInitScale;
+    double maxInitScale = Config::Camera::maxInitScale;
+
+    ImGui::Text("Scale:");
+    ImGui::SameLine();
+    ImGui::SliderScalar("##", ImGuiDataType_Double, &scale, static_cast<void*>(&minInitScale), static_cast<void*>(&maxInitScale), "%E");
+
+    ctx.camera.setInitScale(scale);
+}
+
+void GuiManager::renderTimeAcceleration(const RenderContext& ctx) {
     ImGui::Text("Time Acceleration");
 
     int timeAcceleration = static_cast<int>(ctx.space.getTimeAcceleration());
@@ -71,14 +97,7 @@ void GuiManager::renderControlPanel(const RenderContext& ctx) {
     ImGui::Text("years");
 
     ctx.space.setTimeAcceleration(static_cast<float>(timeAcceleration));
-
-
-
-
-    const int targetInd = ctx.camera.getTargetInd();
-    renderSpeedReset(ctx, targetInd);
 }
-
 
 void GuiManager::renderSpeedReset(const RenderContext& ctx, int targetInd) {
     if (!ctx.mouseStates.isCbSelected) return;

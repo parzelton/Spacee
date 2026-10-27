@@ -522,9 +522,12 @@ namespace Config {
     }
 
     namespace Camera {
-        inline constexpr double targetPixels = 200.;  // between Sun and Mercury, default=200.
+        inline constexpr double targetPixels = 8000.;  // between Sun and Mercury, default=200.
         inline const double scale = targetPixels / (Config::CB::Mercury::semiMajorAxis * Config::Coefs::AU_TO_M);  //  px/m (m to px)
         inline constexpr float minRelScale = 0.007f;  // 0.4f
         inline constexpr float maxRelScale = 35.f;
+
+        inline constexpr double minInitScale = 4.5E-07;
+        inline constexpr double maxInitScale = 1E-08;
     }
 }
