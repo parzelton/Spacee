@@ -14,7 +14,14 @@ int main() {
     bool isFullscreen = false;
     window.setFramerateLimit(Config::Window::fps);
 
-    ImGui::SFML::Init(window);
+    sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
+    int posX = static_cast<int>((desktopMode.size.x - Config::Window::width) / 2);
+    int posY = static_cast<int>((desktopMode.size.y - Config::Window::height) / 2);
+    window.setPosition({ posX, posY });
+
+    if (!ImGui::SFML::Init(window)) {
+        return -1;
+    }
 
     Space space = Space(Config::Coefs::startTimeAcceleration);
     space.initializeSolarSystem();

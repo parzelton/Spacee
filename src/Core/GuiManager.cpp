@@ -13,7 +13,8 @@
 
 
 void GuiManager::render(const RenderContext& ctx) {
-	ImGui::SetNextWindowSize(ImVec2(Config::Gui::width, Config::Gui::height), ImGuiCond_Always);
+    uint64_t height = ctx.window.getSize().y;
+	ImGui::SetNextWindowSize(ImVec2(Config::Gui::width, height), ImGuiCond_Always);
 
 	ImVec2 pos = ImVec2(ctx.window.getSize().x, 0.f);
 	ImVec2 pivot = ImVec2(1.f, 0.f);

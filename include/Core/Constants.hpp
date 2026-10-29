@@ -9,11 +9,11 @@ namespace Config {
     //inline constexpr startTime = 946727935.816  // seconds since January 1, 1970
 
     namespace Window {
-        inline constexpr uint64_t width = 800;
-        inline constexpr uint64_t height = 800;
+        inline constexpr uint64_t width = 1200;
+        inline constexpr uint64_t height = 1000;
 
-        inline constexpr uint64_t minWidth = width;
-        inline constexpr uint64_t minHeight = height;
+        inline constexpr uint64_t minWidth = 800;
+        inline constexpr uint64_t minHeight = 800;
 
 
         inline constexpr sf::Color backgroundColor(51, 31, 61);
@@ -31,7 +31,7 @@ namespace Config {
     }
 
     namespace Gui {
-        inline constexpr float width = 450.f;
+        inline constexpr float width = 400.f;
         inline constexpr float height = 360.f;
 
         inline constexpr float fontGlobalCase = 1.4f;
