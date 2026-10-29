@@ -64,9 +64,14 @@ std::string formatDouble(double number, Unit unit) {
     std::ostringstream oss;
     oss.imbue(std::locale("en_US.UTF-8"));
 
-    // distance
-    if (unit == Unit::Meter || unit == Unit::Kilometer || unit == Unit::Au) {
+    // distance, meter & kilometer
+    if (unit == Unit::Meter || unit == Unit::Kilometer) {
         oss << std::fixed << std::setprecision(2) << number;
+    }
+
+    // distance, au
+    if (unit == Unit::Au) {
+        oss << std::fixed << std::setprecision(4) << number;
     }
 
     // velocity
@@ -99,9 +104,9 @@ std::string formatExponential(double number) {
     return oss.str();
 }
 
-double distanseFromStar(const CelestialBody& star, const CelestialBody& anotherCb) {
-    double dx = abs(star.getX() - anotherCb.getX());
-    double dy = abs(star.getY() - anotherCb.getY());
+double distanseFromAnotherCb(const CelestialBody& targetCb, const CelestialBody& anotherCb) {
+    double dx = abs(targetCb.getX() - anotherCb.getX());
+    double dy = abs(targetCb.getY() - anotherCb.getY());
     return std::sqrt(dx * dx + dy * dy);
 }
 

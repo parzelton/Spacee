@@ -117,7 +117,6 @@ void GuiManager::renderInfo(const RenderContext& ctx) {
     ImGui::SeparatorText("Info");
     if (ctx.mouseStates.isCbSelected) {
         const int targetInd = ctx.camera.getTargetInd();
-        const int starInd = ctx.space.getSunInd();
 
         renderTypeInfo(ctx, targetInd);
         renderNameInfo(ctx, targetInd);
@@ -125,14 +124,23 @@ void GuiManager::renderInfo(const RenderContext& ctx) {
         ImGui::Separator();
 
         renderMassInfo(ctx, targetInd);
-        if (targetInd != starInd) {
-            renderDistanceFromSunInfo(ctx, targetInd, starInd);
+        
+        const CelestialBody* parent = ctx.space.getBodies()[targetInd]->getParent();
+        const CelestialBody* targetCb = ctx.space.getBodies()[targetInd].get();
+        
+        while (parent) {
+            renderDistanceFromAnotherCbInfo(ctx, targetCb, parent);
+            parent = parent->getParent();
         }
+
         renderVelocityInfo(ctx, targetInd);
     }
     else {
-        ImGui::Text("Click on a celestial body to get information");
+        ImGui::TextWrapped("Click on a celestial body to get information");
+        ImGui::Text("");
     }
+
+    ImGui::TextWrapped("In order to see moons change scale of Solar System");
 }
 
 void GuiManager::renderTypeInfo(const RenderContext& ctx, int targetInd) {
@@ -166,11 +174,13 @@ void GuiManager::renderMassInfo(const RenderContext& ctx, int targetInd) {
     ImGui::Text("Earth masses");
 }
 
-void GuiManager::renderDistanceFromSunInfo(const RenderContext& ctx, int targetInd, int starInd) {
-    std::string description = "Distance from the Sun:";
+void GuiManager::renderDistanceFromAnotherCbInfo(const RenderContext& ctx, const auto& targetCb, const auto& anotherCb) {
+    std::string anotherName = anotherCb->getName();
+
+    std::string description = "Distance from the " + anotherName + ":";
     ImGui::Text(description.c_str());
 
-    double distanceInMeters = distanseFromStar(*(ctx.space.getBodies().at(starInd)), *(ctx.space.getBodies().at(targetInd)));  // distance from the Sun of Cb, meters
+    double distanceInMeters = distanseFromAnotherCb(*(anotherCb), *(targetCb));  // distance, meters
     std::string distanceInMetersStr = "\t" + formatDouble(distanceInMeters, Unit::Meter);
     ImGui::Text(distanceInMetersStr.c_str());
     ImGui::SameLine();

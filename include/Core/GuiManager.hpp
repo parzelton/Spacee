@@ -22,6 +22,6 @@ private:
 	static void renderTypeInfo(const RenderContext& ctx, int targetInd);
 	static void renderNameInfo(const RenderContext& ct, int targetIndx);
 	static void renderMassInfo(const RenderContext& ctx, int targetInd);
-	static void renderDistanceFromSunInfo(const RenderContext& ctx, int targetInd, int starInd);
+	static void renderDistanceFromAnotherCbInfo(const RenderContext& ctx, const auto& targetCb, const auto& anotherCb);
 	static void renderVelocityInfo(const RenderContext& ctx, int targetInd);
 };

@@ -5,7 +5,7 @@
 
 CelestialBody::CelestialBody(std::string name, float radius, float minRadius, double mass,
                              double a, double b, sf::Vector2<double> realV, sf::Color color,
-                             CoordinateType type) :
+                             CoordinateType type, CelestialBody* parent) :
         name(name),
         radius(radius),
         minRadius(minRadius),
@@ -13,7 +13,8 @@ CelestialBody::CelestialBody(std::string name, float radius, float minRadius, do
         x(type == CoordinateType::Rectangular ? a * Config::Coefs::AU_TO_M : (b * Config::Coefs::AU_TO_M) * cos(degToRad(a))),
         y(type == CoordinateType::Rectangular ? b * Config::Coefs::AU_TO_M : (b * Config::Coefs::AU_TO_M) * sin(degToRad(a))),
         realV(realV),
-        color(color)
+        color(color),
+        parent(parent)
     {
         setShape();
     }

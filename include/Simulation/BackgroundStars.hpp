@@ -22,7 +22,7 @@ private:
 
     void generateStarsRadiuses();
 
-    void generateStars();  // deprecated function
+    void generateStars();  // DEPRECATED, NOT RECOMMENDED TO USE
 
     void generateStarsVertex();
 

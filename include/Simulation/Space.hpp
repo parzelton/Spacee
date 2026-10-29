@@ -34,7 +34,7 @@ public:
 	const float getTimeAcceleration() const;
 	const double getElapsedSimulationTime() const;
 	const std::vector<std::unique_ptr<CelestialBody>>& getBodies() const;
-	const int getSunInd() const;
+	const int getSunInd() const;  // DEPRECATED, NOT RECOMMENDED TO USE
 
 	void setTimeAcceleration(float timeAcceleration);
 	//void setBodies();  // is this really necessary?

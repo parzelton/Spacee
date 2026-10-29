@@ -29,10 +29,10 @@ protected:
 
 
 public:
-    // heliocentric rectangular & ecliptic coordinate system
+    // heliocentric rectangular & polar coordinate system
     CelestialBody(std::string name, float radius, float minRadius, double mass,
                   double a, double b, sf::Vector2<double> realV, sf::Color color,
-                  CoordinateType type = CoordinateType::Rectangular);
+                  CoordinateType type = CoordinateType::Rectangular, CelestialBody* parent = nullptr);
     virtual ~CelestialBody() = default;
 
     // these ones have default implementations

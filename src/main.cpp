@@ -81,11 +81,16 @@ int main() {
 
                 // event-driven keystroke handling
                 if (auto* keyPressed = event->getIf<sf::Event::KeyPressed>()) {
-                    
-                    if (keyPressed->scancode == sf::Keyboard::Scancode::S) {
+                    auto code = keyPressed->code;
+
+                    auto iter = Config::CB::hotkeyToBodyName.find(code);
+
+                    if (iter != Config::CB::hotkeyToBodyName.end()) {
+                        std::string name = iter->second;
+
                         int ind = 0;
                         for (const std::unique_ptr<CelestialBody>& body : space.getBodies()) {
-                            if (body->getName() == Config::CB::Sun::name) {
+                            if (body->getName() == name) {
                                 camera.setTargetInd(ind);
                                 camera.setIsFollowing(true);
                                 mouseStates.isCbSelected = true;
@@ -95,20 +100,7 @@ int main() {
                         }
                     }
 
-                    if (keyPressed->scancode == sf::Keyboard::Scancode::E) {
-                        int ind = 0;
-                        for (const std::unique_ptr<CelestialBody>& body : space.getBodies()) {
-                            if (body->getName() == Config::CB::Earth::name) {
-                                camera.setTargetInd(ind);
-                                camera.setIsFollowing(true);
-                                mouseStates.isCbSelected = true;
-                                break;
-                            }
-                            ++ind;
-                        }
-                    }
-
-                    if (keyPressed->scancode == sf::Keyboard::Scancode::F11) {
+                    if (code == sf::Keyboard::Key::F11) {
                         if (!isFullscreen) {
                             window.create(sf::VideoMode::getDesktopMode(), "Spacee", sf::Style::None);
                         }
@@ -118,7 +110,7 @@ int main() {
                         isFullscreen = !isFullscreen;
                     }
 
-                    if (keyPressed->scancode == sf::Keyboard::Scancode::Escape) {
+                    if (code == sf::Keyboard::Key::Escape) {
                         ImGui::SFML::Shutdown();
                         window.close();
                         return 0;
@@ -164,8 +156,6 @@ int main() {
             RenderContext ctx{window, camera, space, mouseStates};
             GuiManager::render(ctx);
             ImGui::SFML::Render(window);
-
-            std::cout << "initScale=" << camera.getInitScale() << ", currScale=" << camera.getCurrScale() << ", relScale=" << camera.getRelScale() << std::endl;
 
             window.display();
         }

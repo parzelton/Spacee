@@ -116,6 +116,7 @@ void Space::initializeSolarSystem() {
                                                                 Config::CB::Sun::color,
                                                                 CoordinateType::Rectangular);
     bodies.push_back(std::move(sun));
+    int indSun = 0;
 
     // Mercury
     std::unique_ptr<CelestialBody> mercury = std::make_unique<Planet>(Config::CB::Mercury::name,
@@ -126,7 +127,8 @@ void Space::initializeSolarSystem() {
                                                                       Config::CB::Mercury::startBaseRealY,
                                                                       Config::CB::Mercury::trueVelocity,
                                                                       Config::CB::Mercury::color,
-                                                                      CoordinateType::Rectangular);
+                                                                      CoordinateType::Rectangular,
+                                                                      bodies.at(indSun).get());
     bodies.push_back(std::move(mercury));
 
     // Venus
@@ -138,7 +140,8 @@ void Space::initializeSolarSystem() {
                                                                     Config::CB::Venus::startBaseRealY,
                                                                     Config::CB::Venus::trueVelocity,
                                                                     Config::CB::Venus::color,
-                                                                    CoordinateType::Rectangular);
+                                                                    CoordinateType::Rectangular,
+                                                                    bodies.at(indSun).get());
     bodies.push_back(std::move(venus));
 
     // Earth
@@ -150,8 +153,10 @@ void Space::initializeSolarSystem() {
                                                                     Config::CB::Earth::startBaseRealY,
                                                                     Config::CB::Earth::trueVelocity,
                                                                     Config::CB::Earth::color,
-                                                                    CoordinateType::Rectangular);
+                                                                    CoordinateType::Rectangular,
+                                                                    bodies.at(indSun).get());
     bodies.push_back(std::move(earth));
+    int indEarth = 3;
 
     // Mars
     std::unique_ptr<CelestialBody> mars = std::make_unique<Planet>(Config::CB::Mars::name,
@@ -162,7 +167,8 @@ void Space::initializeSolarSystem() {
                                                                    Config::CB::Mars::startBaseRealY,
                                                                    Config::CB::Mars::trueVelocity,
                                                                    Config::CB::Mars::color,
-                                                                   CoordinateType::Rectangular);
+                                                                   CoordinateType::Rectangular,
+                                                                   bodies.at(indSun).get());
     bodies.push_back(std::move(mars));
 
     // Jupiter
@@ -174,7 +180,8 @@ void Space::initializeSolarSystem() {
                                                                       Config::CB::Jupiter::startBaseRealY,
                                                                       Config::CB::Jupiter::trueVelocity,
                                                                       Config::CB::Jupiter::color,
-                                                                      CoordinateType::Rectangular);
+                                                                      CoordinateType::Rectangular,
+                                                                      bodies.at(indSun).get());
     bodies.push_back(std::move(jupiter));
 
     // Saturn
@@ -186,7 +193,8 @@ void Space::initializeSolarSystem() {
                                                                      Config::CB::Saturn::startBaseRealY,
                                                                      Config::CB::Saturn::trueVelocity,
                                                                      Config::CB::Saturn::color,
-                                                                     CoordinateType::Rectangular);
+                                                                     CoordinateType::Rectangular,
+                                                                     bodies.at(indSun).get());
     bodies.push_back(std::move(saturn));
 
     // Uranus
@@ -198,7 +206,8 @@ void Space::initializeSolarSystem() {
                                                                      Config::CB::Uranus::startBaseRealY,
                                                                      Config::CB::Uranus::trueVelocity,
                                                                      Config::CB::Uranus::color,
-                                                                     CoordinateType::Rectangular);
+                                                                     CoordinateType::Rectangular,
+                                                                     bodies.at(indSun).get());
     bodies.push_back(std::move(uranus));
 
     // Neptune
@@ -210,7 +219,8 @@ void Space::initializeSolarSystem() {
                                                                      Config::CB::Neptune::startBaseRealY,
                                                                      Config::CB::Neptune::trueVelocity,
                                                                      Config::CB::Neptune::color,
-                                                                     CoordinateType::Rectangular);
+                                                                     CoordinateType::Rectangular,
+                                                                     bodies.at(indSun).get());
     bodies.push_back(std::move(neptune));
 
     // Pluto
@@ -222,7 +232,8 @@ void Space::initializeSolarSystem() {
                                                                     Config::CB::Pluto::startBaseRealY,
                                                                     Config::CB::Pluto::trueVelocity,
                                                                     Config::CB::Pluto::color,
-                                                                    CoordinateType::Rectangular);
+                                                                    CoordinateType::Rectangular,
+                                                                    bodies.at(indSun).get());
     bodies.push_back(std::move(pluto));
 
     // Moon
@@ -235,7 +246,7 @@ void Space::initializeSolarSystem() {
                                                                  Config::CB::Moon::trueHeliocentricVelocity,
                                                                  Config::CB::Moon::color,
                                                                  CoordinateType::Rectangular,
-                                                                 earth.get());
+                                                                 bodies.at(indEarth).get());
     bodies.push_back(std::move(moon));
 }
 
@@ -243,7 +254,7 @@ void Space::initializeSolarSystem() {
 
 const float Space::getTimeAcceleration() const { return timeAcceleration; }
 const std::vector<std::unique_ptr<CelestialBody>>& Space::getBodies() const { return bodies; }
-const int Space::getSunInd() const {
+const int Space::getSunInd() const {  // DEPRECATED, NOT RECOMMENDED TO USE
     int i = 0;
     for (auto iter = bodies.cbegin(); iter != bodies.cend() || i < bodies.size(); ++iter, ++i) {
         if ((*iter)->getName() == "Sun") {

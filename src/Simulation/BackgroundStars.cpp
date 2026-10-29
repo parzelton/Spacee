@@ -31,7 +31,7 @@ void BackgroundStars::generateStarsRadiuses() {
     }
 }
 
-void BackgroundStars::generateStars() {  // deprecated function
+void BackgroundStars::generateStars() {  // DEPRECATED, NOT RECOMMENDED TO USE
     generateStarsCoords();
     generateStarsRadiuses();
     this->stars = {};
@@ -68,7 +68,7 @@ BackgroundStars::BackgroundStars(uint64_t seed,
     starsSeed = seed;
     starsCount = count;
     maxStarsRadius = r;
-    //generateStars();  // deprecated function
+    //generateStars();  // DEPRECATED, NOT RECOMMENDED TO USE
     generateStarsVertex();
 }
 

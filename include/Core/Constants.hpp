@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Core/BaseFunctions.hpp"
 #include <vector>
+#include <map>
 
 namespace Config {
     //these seconds are 12:00 on January 1, 2000
@@ -519,6 +520,34 @@ namespace Config {
 
             inline constexpr sf::Color color(180, 180, 180);
         }
+
+        inline const std::map<sf::Keyboard::Key, std::string> hotkeyToBodyName = {
+            {sf::Keyboard::Key::Num0, Config::CB::Sun::name},
+            {sf::Keyboard::Key::Num1, Config::CB::Mercury::name},
+            {sf::Keyboard::Key::Num2, Config::CB::Venus::name},
+            {sf::Keyboard::Key::Num3, Config::CB::Earth::name},
+            {sf::Keyboard::Key::Num4, Config::CB::Mars::name},
+            {sf::Keyboard::Key::Num5, Config::CB::Saturn::name},
+            {sf::Keyboard::Key::Num6, Config::CB::Jupiter::name},
+            {sf::Keyboard::Key::Num7, Config::CB::Uranus::name},
+            {sf::Keyboard::Key::Num8, Config::CB::Neptune::name},
+
+            {sf::Keyboard::Key::Numpad0, Config::CB::Sun::name},
+            {sf::Keyboard::Key::Numpad1, Config::CB::Mercury::name},
+            {sf::Keyboard::Key::Numpad2, Config::CB::Venus::name},
+            {sf::Keyboard::Key::Numpad3, Config::CB::Earth::name},
+            {sf::Keyboard::Key::Numpad4, Config::CB::Mars::name},
+            {sf::Keyboard::Key::Numpad5, Config::CB::Saturn::name},
+            {sf::Keyboard::Key::Numpad6, Config::CB::Jupiter::name},
+            {sf::Keyboard::Key::Numpad7, Config::CB::Uranus::name},
+            {sf::Keyboard::Key::Numpad8, Config::CB::Neptune::name},
+
+            {sf::Keyboard::Key::S, Config::CB::Sun::name},
+            {sf::Keyboard::Key::E, Config::CB::Earth::name},
+            {sf::Keyboard::Key::M, Config::CB::Moon::name},
+            {sf::Keyboard::Key::P, Config::CB::Pluto::name}
+        };
+
     }
 
     namespace Camera {
